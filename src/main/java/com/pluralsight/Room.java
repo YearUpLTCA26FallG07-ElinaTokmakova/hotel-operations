@@ -1,6 +1,6 @@
 package com.pluralsight;
 
-public class Room {
+public class Room { // responsible for knowing everything related to a hotel room
     private int numberOfBeds;
     private double price;
     private boolean isOccupied;
