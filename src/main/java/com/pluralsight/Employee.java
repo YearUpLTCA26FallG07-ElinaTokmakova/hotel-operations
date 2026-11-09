@@ -8,7 +8,7 @@ public class Employee {
     private int hoursWorked;
 
     public int getEmployeeId() {
-        return employeeId;
+        return this.employeeId;
     }
 
     public void setEmployeeId(int employeeId) {
@@ -16,7 +16,7 @@ public class Employee {
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public void setName(String name) {
@@ -24,7 +24,7 @@ public class Employee {
     }
 
     public String getDepartment() {
-        return department;
+        return this.department;
     }
 
     public void setDepartment(String department) {
@@ -32,7 +32,7 @@ public class Employee {
     }
 
     public double getPayRate() {
-        return payRate;
+        return this.payRate;
     }
 
     public void setPayRate(double payRate) {
@@ -40,7 +40,7 @@ public class Employee {
     }
 
     public int getHoursWorked() {
-        return hoursWorked;
+        return this.hoursWorked;
     }
 
     public void setHoursWorked(int hoursWorked) {
@@ -48,6 +48,9 @@ public class Employee {
     }
 
     public double getTotalPay() {
+        if (hoursWorked > this.getRegularHours()) {
+            return this.payRate * this.getRegularHours() + this.getOvertimeHours() * this.payRate * 1.5;
+        }
         return this.payRate * this.hoursWorked;
     }
 
@@ -56,6 +59,6 @@ public class Employee {
     }
 
     public int getOvertimeHours() {
-        return hoursWorked - 40;
+        return this.hoursWorked - 40;
     }
 }
