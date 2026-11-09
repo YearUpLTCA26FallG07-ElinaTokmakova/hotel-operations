@@ -61,4 +61,8 @@ public class Employee {
     public int getOvertimeHours() {
         return this.hoursWorked - 40;
     }
+
+    public void punchTimeCard(int punchIn, int punchOut) {
+hoursWorked += punchOut - punchIn;
+    }
 }
