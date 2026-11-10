@@ -37,16 +37,29 @@ public class Room { // responsible for knowing everything related to a hotel roo
     }
 
     public boolean isAvailable() { // if it is clean and not currently occupied
-        return !dirty && !occupied;
+        if (dirty == false && occupied == false) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public void checkIn() {
-        occupied = true;
-        dirty = true;
+        if (occupied) {
+            System.out.println("△ Cannot check in. This room is already occupied.");
+        } else if (dirty) {
+            System.out.println("△ Cannot check in. This room hasn't been cleaned yet.");
+        } else {
+            occupied = true;
+            dirty = true;
+            System.out.println("✓ Successfully checked in.");
+        }
     }
 
     public void checkOut() {
         occupied = false;
+        dirty = true;
+        System.out.println("✓ Successfully checked out.");
     }
 
     public void cleanRoom() {
