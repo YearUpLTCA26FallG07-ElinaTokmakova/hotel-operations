@@ -57,18 +57,23 @@ public class Employee {
     }
 
     public String getTotalPay() {
-        if (hoursWorked > this.getRegularHours()) {
-            return "Total pay: " + this.payRate * this.getRegularHours() + this.getOvertimeHours() * this.payRate * 1.5;
-        }
-        return "Total pay: " + this.payRate * this.hoursWorked;
+            return "Total pay: " + this.getRegularHours() * this.payRate + this.getOvertimeHours() * this.payRate * 1.5;
     }
 
     public int getRegularHours() {
-        return 40;
+        if(this.hoursWorked <= 40) {
+            return this.hoursWorked;
+        } else {
+            return 40;
+        }
     }
 
     public int getOvertimeHours() {
-        return this.hoursWorked - 40;
+        if(this.hoursWorked <=40) {
+            return 0;
+        } else {
+            return this.hoursWorked - 40;
+        }
     }
 
     public void punchTimeCard(int punchIn, int punchOut) {
