@@ -1,5 +1,11 @@
 package com.pluralsight;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
+
 public class Employee {
     private int employeeId;
     private String name;
@@ -63,6 +69,30 @@ public class Employee {
     }
 
     public void punchTimeCard(int punchIn, int punchOut) {
-hoursWorked += punchOut - punchIn;
+        hoursWorked += punchOut - punchIn;
+    }
+
+    public String punchIn(int time) {
+        LocalTime punchIn = LocalTime.of(time, 0);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
+        return punchIn().format(formatter);
+    }
+
+    public String punchIn() {
+        LocalTime punchIn = LocalTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
+        return punchIn.format(formatter);
+    }
+
+    public String punchOut(int time) {
+        LocalTime punchOut = LocalTime.of(time, 0);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
+        return punchOut().format(formatter);
+    }
+
+    public String punchOut() {
+        LocalTime punchOut = LocalTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
+        return punchOut.format(formatter);
     }
 }
