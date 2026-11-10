@@ -50,7 +50,7 @@ public class Room { // responsible for knowing everything related to a hotel roo
     }
 
     public void cleanRoom() {
-dirty = false;
+        dirty = false;
     }
 
     public String toString() {

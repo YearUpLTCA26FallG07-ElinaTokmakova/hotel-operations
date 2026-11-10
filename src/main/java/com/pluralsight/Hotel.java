@@ -1,7 +1,7 @@
 package com.pluralsight;
 
 public class Hotel {
-    private String name;
+    private String name = "Hilton";
     private int numberOfSuites;
     private int numberOfRooms;
     private int bookedSuites;
@@ -21,10 +21,32 @@ public class Hotel {
         this.bookedBasicRooms = bookedBasicRooms;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public int getNumberOfSuites() {
+        return numberOfSuites;
+    }
+
+    public int getNumberOfRooms() {
+        return numberOfRooms;
+    }
+
+    public int getBookedSuites() {
+        return bookedSuites;
+    }
+
+    public int getBookedBasicRooms() {
+        return bookedBasicRooms;
+    }
+
     public boolean bookRoom(int roomCount, boolean suite) {
         if (!suite && roomCount <= getAvailableRooms()) {
+            bookedBasicRooms += roomCount;
             return true;
         } else if (suite && roomCount <= getAvailableSuites()) {
+            bookedSuites += roomCount;
             return true;
         } else {
             return false;
@@ -37,5 +59,12 @@ public class Hotel {
 
     public int getAvailableRooms() {
         return numberOfRooms - bookedBasicRooms;
+    }
+
+    public String toString() {
+        return String.format("%s: " +
+                        "Booked suites: %d, Booked basic rooms: %d, " +
+                        "Available suites: %d, Available basic rooms: %d",
+                getName(), getBookedSuites(), getBookedBasicRooms(), getAvailableSuites(), getAvailableRooms());
     }
 ;}

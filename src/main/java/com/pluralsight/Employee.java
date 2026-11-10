@@ -1,10 +1,6 @@
 package com.pluralsight;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class Employee {
     private int employeeId;
@@ -12,6 +8,14 @@ public class Employee {
     private String department;
     private double payRate;
     private int hoursWorked;
+
+    public Employee(int employeeId, String name, String department, double payRate, int hoursWorked) {
+        this.employeeId = employeeId;
+        this.name = name;
+        this.department = department;
+        this.payRate = payRate;
+        this.hoursWorked = hoursWorked;
+    }
 
     public int getEmployeeId() {
         return this.employeeId;
@@ -72,10 +76,11 @@ public class Employee {
         hoursWorked += punchOut - punchIn;
     }
 
-    public String punchIn(int time) {
-        LocalTime punchIn = LocalTime.of(time, 0);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
-        return punchIn().format(formatter);
+    public int punchIn(int time) {
+//        LocalTime punchIn = LocalTime.of(time, 0);
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
+//        return punchIn().format(formatter);
+        return time;
     }
 
     public String punchIn() {
@@ -84,10 +89,11 @@ public class Employee {
         return punchIn.format(formatter);
     }
 
-    public String punchOut(int time) {
-        LocalTime punchOut = LocalTime.of(time, 0);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
-        return punchOut().format(formatter);
+    public int punchOut(int time) {
+//        LocalTime punchOut = LocalTime.of(time, 0);
+//        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
+//        return punchOut().format(formatter);
+        return time;
     }
 
     public String punchOut() {
