@@ -7,14 +7,13 @@ public class Employee {
     private String name;
     private String department;
     private double payRate;
-    private int hoursWorked;
+    private int hoursWorked = 0;
 
-    public Employee(int employeeId, String name, String department, double payRate, int hoursWorked) {
+    public Employee(int employeeId, String name, String department, double payRate) {
         this.employeeId = employeeId;
         this.name = name;
         this.department = department;
         this.payRate = payRate;
-        this.hoursWorked = hoursWorked;
     }
 
     public int getEmployeeId() {
@@ -57,11 +56,11 @@ public class Employee {
         this.hoursWorked = hoursWorked;
     }
 
-    public double getTotalPay() {
+    public String getTotalPay() {
         if (hoursWorked > this.getRegularHours()) {
-            return this.payRate * this.getRegularHours() + this.getOvertimeHours() * this.payRate * 1.5;
+            return "Total pay: " + this.payRate * this.getRegularHours() + this.getOvertimeHours() * this.payRate * 1.5;
         }
-        return this.payRate * this.hoursWorked;
+        return "Total pay: " + this.payRate * this.hoursWorked;
     }
 
     public int getRegularHours() {
