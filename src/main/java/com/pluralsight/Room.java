@@ -37,11 +37,10 @@ public class Room { // responsible for knowing everything related to a hotel roo
     }
 
     public boolean isAvailable() { // if it is clean and not currently occupied
-        if (dirty == false && occupied == false) {
+        if (!dirty && !occupied) {
             return true;
-        } else {
-            return false;
         }
+        return false;
     }
 
     public void checkIn() {
@@ -57,13 +56,24 @@ public class Room { // responsible for knowing everything related to a hotel roo
     }
 
     public void checkOut() {
-        occupied = false;
-        dirty = true;
-        System.out.println("✓ Successfully checked out.");
+        if(occupied) {
+            occupied = false;
+            dirty = true;
+            System.out.println("✓ Successfully checked out.");
+        } else {
+            System.out.println("△ Nothing to check out. Room is not occupied.");
+        }
     }
 
     public void cleanRoom() {
-        dirty = false;
+        if(!occupied && dirty) {
+            dirty = false;
+            System.out.println("✓ Room is clean and marked available.");
+        } else if (occupied) {
+            System.out.println("△ Cannot clean. Room is currently occupied.");
+        } else {
+            System.out.println("△ Room is already clean.");
+        }
     }
 
     public String toString() {
