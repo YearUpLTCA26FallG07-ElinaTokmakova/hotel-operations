@@ -76,15 +76,37 @@ public class Employee {
         }
     }
 
-    public void punchTimeCard(int punchIn, int punchOut) {
-        hoursWorked += punchOut - punchIn;
+    public Integer punchTimeCard(int punchIn, int punchOut) {
+        // if hour is valid
+        if ((0 <= punchIn) && (punchIn <= 24) && (0 <= punchOut) && (punchOut <= 24)) {
+            System.out.println("Punch-in time: " + punchIn + ":00");
+            System.out.println("Punch-out time: " + punchOut + ":00");
+            hoursWorked = Math.abs(punchOut - punchIn);
+            System.out.println("Hours worked: " + hoursWorked);
+            return hoursWorked;
+        }
+        //if hour is invalid
+        else {
+            System.out.println("Please enter a valid punch-in hour from 0 to 24.");
+            return null;
+        }
     }
 
-    public int punchIn(int time) {
+    public Integer punchIn(int time) {
 //        LocalTime punchIn = LocalTime.of(time, 0);
 //        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
 //        return punchIn().format(formatter);
-        return time;
+
+        // if hour is valid
+        if ((0 <= time) && (time <= 24)) {
+            System.out.println("Punch-in time: " + time + ":00");
+            return time;
+        }
+        //if hour is invalid
+        else {
+            System.out.println("Please enter a valid punch-in hour from 0 to 24.");
+            return null;
+        }
     }
 
     public String punchIn() {
@@ -93,11 +115,21 @@ public class Employee {
         return punchIn.format(formatter);
     }
 
-    public int punchOut(int time) {
+    public Integer punchOut(int time) {
 //        LocalTime punchOut = LocalTime.of(time, 0);
 //        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("hh:mm a");
 //        return punchOut().format(formatter);
-        return time;
+
+        // if hour is valid
+        if ((0 <= time) && (time <= 24)) {
+            System.out.println("Punch-out time: " + time + ":00");
+            return time;
+        }
+        //if hour is invalid
+        else {
+            System.out.println("Please enter a valid punch-out hour from 0 to 24.");
+            return null;
+        }
     }
 
     public String punchOut() {
